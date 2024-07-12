@@ -1,0 +1,30 @@
+{
+  "typescript": {
+  },
+  "json": {
+  },
+  "markdown": {
+  },
+  "toml": {
+  },
+  "dockerfile": {
+  },
+  "biome": {
+  },
+  "ruff": {
+  },
+  "excludes": [
+    "**/node_modules",
+    "**/*-lock.json"
+  ],
+  "plugins": [
+    "https://plugins.dprint.dev/typescript-0.88.9.wasm",
+    "https://plugins.dprint.dev/json-0.19.1.wasm",
+    "https://plugins.dprint.dev/markdown-0.16.3.wasm",
+    "https://plugins.dprint.dev/toml-0.5.4.wasm",
+    "https://plugins.dprint.dev/dockerfile-0.3.0.wasm",
+    "https://plugins.dprint.dev/biome-0.3.0.wasm",
+    "https://plugins.dprint.dev/ruff-0.0.8.wasm",
+    "https://plugins.dprint.dev/prettier-0.33.0.json@d2ef27be1ce730b999167a9f9b89239b774bd5231162b125a721cdb15d693bf2"
+  ]
+}

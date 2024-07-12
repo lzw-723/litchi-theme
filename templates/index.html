@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="{{ lang }}">
+
+<head>
+  <title>{% block title %}{{ config.title }}{% endblock title %}</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  {% if page %}
+  {% if page.description %}
+  <meta name="description" content="{{ page.description }}" />
+  {% elif config.description %}
+  <meta name="description" content="{{ config.description }}" />
+  {% endif %}
+  {% elif config.description %}
+  <meta name="description" content="{{ config.description }}" />
+  {% endif %}
+
+  {% block css %}
+  <!-- <link rel="stylesheet" href="https://cdn.staticfile.net/pure/3.0.0/pure.min.css" />
+  <link rel="stylesheet" href="https://cdn.staticfile.net/pure/3.0.0/grids-responsive-min.css" /> -->
+  <!-- <link href="{{ config.base_url }}/css/spruce.min.css" rel="stylesheet" /> -->
+  <link rel="stylesheet" href="https://unpkg.com/@spectre-org/spectre-css/dist/spectre.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/@spectre-org/spectre-css/dist/spectre-exp.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/@spectre-org/spectre-css/dist/spectre-icons.min.css">
+  {% endblock css %}
+
+
+  {% block js %}
+  <script src="https://cdn.staticfile.net/alpinejs/3.13.3/cdn.min.js" defer></script>
+  {% if config.extra.katex_enable %}
+  <link rel="stylesheet" href="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/KaTeX/0.15.2/katex.min.css">
+
+  <script defer src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/KaTeX/0.15.2/katex.min.js"></script>
+  <script defer
+    src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/KaTeX/0.15.2/contrib/mathtex-script-type.min.js"></script>
+  {% if config.extra.katex_auto_render %}
+  <script defer src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/KaTeX/0.15.2/contrib/auto-render.min.js"
+    onload="renderMathInElement(document.body);"></script>
+  {% endif %}
+  {% endif %}
+  {% endblock js %}
+
+  {% block extra_head %} {% endblock extra_head %}
+</head>
+
+
+<body>
+
+  <header class="navbar">
+    <section class="navbar-section">
+        <a href="..." class="navbar-brand mr-2">Website Title</a>
+        <a href="..." class="btn btn-link"><i class="icon icon-link"></i></a>
+    </section>
+    <section class="navbar-section">
+        <div class="input-group input-inline">
+            <input class="form-input" type="text" placeholder="search">
+            <button class="btn btn-primary input-group-btn">Search</button>
+        </div>
+    </section>
+</header>
+
+  <div class="container grid-lg">
+    <div class="columns">
+      <div class="column col-1">col-xs-2</div>
+      <div class="column col-10">
+
+        <div class="content">
+          {% block content %}
+          <ul class="posts">
+            {% for page in section.pages | reverse %}
+            <br>
+            <div class="card">
+              <!-- <div class="card-image">
+                <img src="img/osx-el-capitan.jpg" class="img-responsive">
+              </div> -->
+              <div class="card-header">
+                <div class="card-title h5">{{ page.title | safe }}</div>
+                <div class="card-subtitle text-gray">{{ page.date | date(format="%Y-%m-%d") }}</div>
+              </div>
+              <div class="card-body">
+                ...
+              </div>
+              <div class="card-footer">
+                <a class="btn btn-primary" href="{{ page.permalink }}">Read</a>
+              </div>
+            </div>
+
+
+            <!-- <li class="post-item">
+              <span class="post-date">{{ page.date | date(format="%Y-%m-%d") }}</span>
+              <h3 class="post-title">
+                <a href="{{ page.permalink }}"> {{ page.title | safe }} </a>
+              </h3>
+            </li> -->
+            {% endfor %}
+          </ul>
+          <nav class="pagination">
+            {% if paginator.previous %}
+            <a class="previous" href="{{ paginator.previous }}">上一页</a>
+            <div class="pagination-spliter"></div>
+            <a class="next" href="{{ paginator.next }}">下一页</a>
+            {% endif %}
+          </nav>
+          {% endblock content %}
+        </div>
+
+      </div>
+      <div class="column col-1">col-xs-2</div>
+    </div>
+  </div>
+
+
+
+  {% if not page %}
+  <!-- nav -->
+  {% endif %}
+
+
+  {% block footer %}
+  <!-- footer -->
+  <div class="container">
+    <div class="columns">
+      <div class="column col-4"></div>
+      <div class="column col-4">
+        <footer class="footer text-center">
+          <span>Powered by zola</span>
+          &
+          <span>Themed by litchi</span>
+        </footer>
+      </div>
+      <div class="column col-4"></div>
+    </div>
+  </div>
+
+  {% endblock footer %}
+
+</body>
+
+</html>
