@@ -5,7 +5,7 @@ author = "lzw-723"
 +++
 
 
----
+<!-- ---
 layout:     post                    # 使用的布局（不需要改）
 title:      Markdown语法总结              # 标题 
 subtitle:   我们坚信写作写的是内容，所思所想，而不是花样格式 #副标题
@@ -16,7 +16,7 @@ img:        https://s1.ax1x.com/2020/03/21/8fCDHA.jpg
 tags:                               #标签
     - Markdown
     - 写作
----
+--- -->
 
 
 ## Markdow简介
