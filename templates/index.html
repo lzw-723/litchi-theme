@@ -87,23 +87,24 @@
                   {{ page.content | safe | striptags | truncate(length=40, end="...")}}
                 </div>
               </div>
-
-
-              <!-- <li class="post-item">
-              <span class="post-date">{{ page.date | date(format="%Y-%m-%d") }}</span>
-              <h3 class="post-title">
-                <a href="{{ page.permalink }}"> {{ page.title | safe }} </a>
-              </h3>
-            </li> -->
               {% endfor %}
             </ul>
-            <nav class="pagination">
-              {% if paginator.previous %}
-              <a class="previous" href="{{ paginator.previous }}">上一页</a>
-              <div class="pagination-spliter"></div>
-              <a class="next" href="{{ paginator.next }}">下一页</a>
-              {% endif %}
-            </nav>
+
+            {% if paginator.previous %}
+            <ul class="pagination">
+              <li class="page-item page-prev">
+                <a href="{{ paginator.previous }}">
+                  <div class="page-item-subtitle">上一页</div>
+                </a>
+              </li>
+              <li class="page-item page-next">
+                <a href="{{ paginator.next }}">
+                  <div class="page-item-subtitle">下一页</div>
+                </a>
+              </li>
+            </ul>
+            {% endif %}
+
             {% endblock content %}
           </div>
 
